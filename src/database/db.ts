@@ -40,6 +40,10 @@ export const initDB = async () => {
   await pool.query(/* SQL */ `
     CREATE TABLE IF NOT EXISTS bookings(
     id SERIAL PRIMARY KEY,
+    customer_id SERIAL,
+    vehicle_id SERIAL,
+    FOREIGN KEY (customer_id) REFERENCES users(id),
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
     )
     `);
 };
